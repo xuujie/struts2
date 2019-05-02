@@ -17,12 +17,15 @@
 */
 package org.superbiz.struts;
 
+import org.springframework.stereotype.Repository;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Stateless
+@Repository
 public class UserServiceImpl implements UserService {
 
     @PersistenceContext(unitName = "user")
@@ -32,7 +35,7 @@ public class UserServiceImpl implements UserService {
         manager.persist(user);
     }
 
-    public User find(int id) {
+    public User find(long id) {
         return manager.find(User.class, id);
     }
 
