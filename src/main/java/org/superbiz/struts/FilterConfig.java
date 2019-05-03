@@ -5,8 +5,10 @@ import org.apache.struts2.dispatcher.ActionContextCleanUp;
 import org.apache.struts2.dispatcher.FilterDispatcher;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 
+@Configuration
 public class FilterConfig {
 
     @Bean
