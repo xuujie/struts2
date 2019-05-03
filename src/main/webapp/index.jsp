@@ -15,3 +15,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 <title>Main page</title>
+
+<a href="/listAllUsers">All Users</a><br/>
+<a href="/findUserForm">Find User</a><br/>
+<a href="/addUserForm">Add User</a><br/>
