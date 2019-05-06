@@ -22,6 +22,7 @@ import org.springframework.stereotype.Repository;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Stateless
@@ -31,6 +32,7 @@ public class UserServiceImpl implements UserService {
     @PersistenceContext
     private EntityManager manager;
 
+    @Transactional
     public void add(User user) {
         manager.persist(user);
     }
