@@ -10,10 +10,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class UsersController {
 
-    private final UserService userService;
 
-    public UsersController(UserService userService) {
-        this.userService = userService;
+    private final UserRepository userRepository;
+
+    public UsersController(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
 
@@ -38,7 +39,7 @@ public class UsersController {
             model.addAttribute("errorMessage", "last name must be provided");
             return "addUserForm";
         }
-        userService.add(new User(id, firstName, lastName));
+        userRepository.save(new User(id, firstName, lastName));
         return "addedUser";
     }
 
@@ -49,7 +50,7 @@ public class UsersController {
 
     @PostMapping("/findUser")
     public String findUser(@RequestParam long id, Model model) {
-        User user = userService.find(id);
+        User user = userRepository.findById(id);
 
         if (user == null) {
             model.addAttribute("errorMessage", "User not found");
@@ -62,7 +63,7 @@ public class UsersController {
 
     @GetMapping("/list")
     public String listUsers(Model model) {
-        model.addAttribute("users", userService.findAll());
+        model.addAttribute("users", userRepository.findAll());
         return "displayUsers";
     }
 }
